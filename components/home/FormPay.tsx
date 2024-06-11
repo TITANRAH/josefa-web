@@ -22,7 +22,7 @@ function FormPay() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      valor: "1",
+      valor: "2000",
       mensaje: "",
     },
   });
@@ -42,7 +42,7 @@ function FormPay() {
     }
   }
   return (
-    <div className="m-auto grid gap-6 p-4 max-w-96 bg-yellow-50 border-2 border-green-200 shadow-2xl">
+    <div className="m-auto grid gap-6 p-4 max-w-96 bg-yellow-50 border-2 border-green-200 shadow-2xl rounded-lg">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -73,7 +73,7 @@ function FormPay() {
                 <FormLabel className="text-slate-600">Mensaje</FormLabel>
                 <FormControl>
                   <Textarea
-                    className="min-h-72 border-slate-300  dark:text-slate-50 focus-within:border-pink-600"
+                    className=" min-h-24 border-slate-300  dark:text-slate-50 focus-within:border-pink-600"
                     placeholder="Deja tu mensaje"
                     {...field}
                   />

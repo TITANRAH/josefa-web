@@ -58,12 +58,12 @@ export const LoginForm = ({ className }: ILoginFormProps) => {
     const res = await signIn("credentials", { ...values, redirect: false });
     if (!res?.ok) {
 
-      toast.error("Usuario o clave incorrecta. Por favor intente nuevamente.");
+      toast.error("Usuario o clave incorrecta. Por favor intente nuevamente.", {position: 'bottom-right'});
 
       form.reset();
     }
     if (res?.status === 200) {
-      toast.success("Inicio de sesión exitoso");
+      toast.success("Inicio de sesión exitoso", {position: 'bottom-right'});
       router.push("/dashboard");
     }
     // function seRepiteMasDeUnaVez(arr: Cliente[], correo: string): boolean {
@@ -147,9 +147,9 @@ export const LoginForm = ({ className }: ILoginFormProps) => {
         </div>
         <div className="flex mt-6 flex-col gap-4 sm:flex-row justify-between md:items-center ">
           <div className="w-full shrink-0">
-            <Button className="w-full rounded-md" type="submit">
+            <Button className="w-full bg-blue-600 hover:bg-blue-800 rounded-md" type="submit">
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Ingresar
+              INGRESAR
             </Button>
           </div>
         </div>

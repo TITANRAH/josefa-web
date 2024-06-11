@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { client } from "@/lib/mercadopago";
+import { redirect } from "next/navigation";
 
 // le digo al webhook que a esta ruta neceisto que llegue la info cuando se compre algo en mi plataforma
 // extraigo el body cuando se genere un pago
@@ -19,6 +20,17 @@ export async function POST(request: NextRequest) {
 //   console.log(request.headers.get("x-request-id"));
 
   const body = await request.json();
+
+  if(!body.data.id) {
+    console.log('no trae nada');
+    return;
+    
+  }
+
+  console.log(body.data.id);
+  
+
+
 //   console.log(body);
   const ListHeaders = headers();
   //   de los headers tomo esta propiedad x-request-id
@@ -68,6 +80,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ status: "Not Authorized" }, { status: 401 });
   } 
+  console.log('verifiacion correcta son iguales');
+  
 
   //   consulta de forma segura si pasa la seguridad
   const paymentId = body.data.id;
@@ -75,7 +89,8 @@ export async function POST(request: NextRequest) {
   const payment = await new Payment(client).get({
     id: paymentId,
   });
-//   console.log(payment);
+  console.log(payment);
+
 
   switch (payment.status_detail) {
     case "cc_rejected_insufficient_amount":
@@ -114,16 +129,16 @@ export async function POST(request: NextRequest) {
       });
   }
 
-  if (payment.status === "in_process") {
-    const userFound = await prisma.user.findUnique({
-      where: {
-        id: payment.metadata.user_id,
-      },
-    });
+  // if (payment.status === "in_process") {
+    // const userFound = await prisma.user.findUnique({
+    //   where: {
+    //     id: payment.metadata.user_id,
+    //   },
+    // });
 
-    if (!userFound) {
-      return NextResponse.json("User not found", { status: 401 });
-    }
+    // if (!userFound) {
+    //   return NextResponse.json("User not found", { status: 401 });
+    // }
 
     // console.log(userFound);
 
@@ -152,24 +167,24 @@ export async function POST(request: NextRequest) {
     // console.log(newPaymentRecordPending);
 
     // CONSULTAR SI EL PAGO ESTA APROBADO POR PARTE DE MERCADO PAGO
-    return NextResponse.json("ok");
-  }
+    // return NextResponse.json("ok");
+  // }
 
   //   actualizar el usuario en la bd y actualziar el esstado del pedido
 
   //   aqui para pagar hay que tomar el tunel la url y auteticarse}
 
-  const userFound = await prisma.user.findUnique({
-    where: {
-      id: payment.metadata.user_id,
-    },
-  });
+  // const userFound = await prisma.user.findUnique({
+  //   where: {
+  //     id: payment.metadata.user_id,
+  //   },
+  // });
 
 //   console.log(userFound);
 
-  if (!userFound) {
-    return NextResponse.json("User not found", { status: 401 });
-  }
+  // if (!userFound) {
+  //   return NextResponse.json("User not found", { status: 401 });
+  // }
 
   //   const newPaymentRecord = await prisma.payments.create({
   //     data: {

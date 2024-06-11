@@ -22,15 +22,15 @@ async function checkPayment(paymentId: string) {
 
     console.log(payment);
 
-    if (payment.status != "approved") {
-      return <div>Hubo un error con el pago</div>;
+    if (payment.status == "approved") {
+      return <Video video="/gira.mp3"/>
     }
   } catch (error) {
     console.log(error);
     return <div>Hubo un error con el pago</div>;
   }
 }
-async function GraciasPage(props: Props) {
+async function ProcesandoPage(props: Props) {
   const { searchParams } = props;
 
   if (!searchParams.payment_id) {
@@ -40,8 +40,8 @@ async function GraciasPage(props: Props) {
   await checkPayment(searchParams.payment_id);
 
   return (
-    <Video video="/gira.mp4"/>
+    <Video video="/procesando.mp4"/>
   );
 }
 
-export default GraciasPage;
+export default ProcesandoPage;

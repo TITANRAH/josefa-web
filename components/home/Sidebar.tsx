@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/collapsible";
 import { petsLinks, sidebarLinks } from "@/data";
 import { Avatar } from "../ui/avatar";
+import { signOut, useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 interface Props {
   showSidebar: boolean;
@@ -31,6 +33,13 @@ function Sidebar(props: Props) {
   const { showSidebar, setShowSidebar } = props;
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const userData = useSession();
+
+  async function logout() {
+    await signOut().then(() =>
+      toast("Sesión finalizada", { position: "bottom-right" })
+    );
+  }
 
   return (
     <div
@@ -42,14 +51,7 @@ function Sidebar(props: Props) {
       )}
     >
       <Link href="/home">
-        <Image
-          alt="foto"
-          width={250}
-          height={250}
-          src={
-            "/MIS.gif"
-          }
-        />
+        <Image alt="foto" width={250} height={250} src={"/MIS.gif"} />
       </Link>
       <div className="space-y-3 flex flex-col mt-14">
         <Collapsible className="pr-1 ">
@@ -126,13 +128,15 @@ function Sidebar(props: Props) {
           </Link>
         ))}
 
-        {/* <button
-          onClick={() => setShowSidebar(false)}
-          className="bg-lime-600 rounded-xl flex items-center space-x-3 py-2 px-6 border-l-4 border-green-600"
-        >
-          <LogOut />
-          <span>Logout</span>
-        </button> */}
+        {userData.data && (
+          <button
+            onClick={() => logout()}
+            className="bg-lime-600 rounded-xl flex items-center space-x-3 py-2 px-6 border-l-4 border-green-600"
+          >
+            <LogOut />
+            <span>Logout</span>
+          </button>
+        )}
       </div>
     </div>
   );

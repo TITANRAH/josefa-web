@@ -11,7 +11,7 @@ function Articulo() {
         <Image alt='dibujos' height={200} width={200} src={jose} className="w-full max-h-36 md:max-h-60 object-cover  rounded-xl"/>
       </div>
       <div className="w-full md:w-2/3 flex flex-col justify-center max-h-24 overflow-x-scroll md:max-h-60" >
-        <p className="text-pink-900 text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde molestias vel perspiciatis suscipit placeat dolore veritatis impedit porro! Architecto nesciunt possimus tempora soluta porro dolor rem explicabo deleniti? Natus, magni.</p>
+        <p className="text-pink-900 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde molestias vel perspiciatis suscipit placeat dolore veritatis impedit porro! Architecto nesciunt possimus tempora soluta porro dolor rem explicabo deleniti? Natus, magni.</p>
       </div>
     </div>
   </div>

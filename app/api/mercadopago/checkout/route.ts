@@ -74,15 +74,15 @@ export async function POST(request: Request) {
     //   creo una nueva preferencia basado en el cliente conectado
     const preference = new Preference(client);
 
-    const session = await auth();
+    // const session = await auth();
 
     // console.log("sesion que se va al checkout de mp", session!.user);
 
-    if (!session) {
+    // if (!session) {
     //   console.log("entro al no session oooh");
 
-      return NextResponse.json({ error: "Unauthorized" }, { status: 400 });
-    }
+      // return NextResponse.json({ error: "Unauthorized" }, { status: 400 });
+    // }
     //   respuesta de esa orden de compra de la preferencia
     // const cart = await request.json();
     // console.log(cart);
@@ -113,9 +113,7 @@ export async function POST(request: Request) {
           pending: `${process.env.MERCADOPAGO_BACKEND_URL}/home/pendiente`,
         },
         auto_return: "approved",
-        metadata: {
-          userId: session.user.id,
-        },
+       
       },
     });
 
