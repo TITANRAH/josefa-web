@@ -61,7 +61,7 @@ export const authOptions: NextAuthOptions = {
     // ver ejemplo abajo
 
     async session({ session, token }) {
-      console.log("entro a la ses", token);
+      // console.log("entro a la ses", token);
 
       if (token.sub && session.user) {
         session.user.id = token.sub;
@@ -78,23 +78,23 @@ export const authOptions: NextAuthOptions = {
         session.user.role = token.role as any;
       }
 
-      console.log("desde session callback", {
-        sessionToken: session.user,
-      });
+      // console.log("desde session callback", {
+      //   sessionToken: session.user,
+      // });
       return session;
     },
 
     async jwt({ token }) {
       if (!token.sub) return token;
 
-      console.log("dsde jwt", token);
-      console.log("sub", token.sub);
+      // console.log("dsde jwt", token);
+      // console.log("sub", token.sub);
       const existingUser = await getUserById(token.sub!);
 
       if (!existingUser) return token;
 
       token.role = existingUser.role;
-      console.log("entro aca", token);
+      // console.log("entro aca", token);
       return token;
     },
   },

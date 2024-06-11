@@ -6,6 +6,6 @@ export const client = new MercadoPagoConfig({
   options: { timeout: 5000, idempotencyKey: "abc" },
 });
 
-console.log(client.accessToken)
+// console.log(client.accessToken)
 
 

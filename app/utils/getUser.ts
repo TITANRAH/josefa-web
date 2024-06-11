@@ -1,7 +1,7 @@
 import prismadb from "@/lib/prismadb";
 
 export const getUserByEmail = async (email: string) => {
-  console.log("email", email);
+  // console.log("email", email);
 
   try {
     const user = await prismadb.user.findFirst({

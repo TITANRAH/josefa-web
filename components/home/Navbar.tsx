@@ -23,7 +23,7 @@ function Navbar(props: Props) {
   const pathname = usePathname();
   const userData = useSession();
 
-  console.log(userData.data);
+  // console.log(userData.data);
 
   return (
     <div className="flex items-center shadow-lg justify-between bg-green-400 dark:bg-slate-800 text-slate-50 h-24 py-8 fixed w-full top-0 px-8 z-50 pr-[20rem]">

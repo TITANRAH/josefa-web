@@ -36,11 +36,11 @@ function FormCreationArticle() {
   });
 
   async function onSubmit(values: z.infer<typeof formArticleSchema>) {
-      console.log(imageUrl);
+    //   console.log(imageUrl);
       
       values.imagen = imageUrl;
       
-      console.log("entro al on submit", values);
+    //   console.log("entro al on submit", values);
 
     
 }

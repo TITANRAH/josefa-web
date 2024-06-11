@@ -13,11 +13,11 @@ export const { GET, POST } = createRouteHandler({
 
 export async function DELETE(request: NextRequest) {
 
-    console.log('entro');
+    // console.log('entro');
     
     const { fileKey } = await request.json();
 
-    console.log(fileKey);
+    // console.log(fileKey);
     
     const utApi = new UTApi();
     await utApi.deleteFiles(fileKey);

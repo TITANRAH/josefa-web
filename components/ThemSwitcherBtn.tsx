@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 export default function ThemSwitcherBtn() {
   const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
-  console.log(theme);
+  // console.log(theme);
 
   useEffect(() => {
     setMounted(true);

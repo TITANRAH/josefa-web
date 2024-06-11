@@ -28,7 +28,7 @@ function FormPay() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("entro al on submit", values);
+    // console.log("entro al on submit", values);
 
     if (values.valor !== "") {
       const res = await fetch("/api/mercadopago/checkout", {
@@ -37,7 +37,7 @@ function FormPay() {
       });
 
       const data = await res.json();
-      console.log(res);
+      // console.log(res);
       window.location.href = data.init_point;
     }
   }

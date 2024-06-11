@@ -55,12 +55,12 @@ export default function ImageInput(props: Props) {
           onClientUploadComplete={(res) => {
             setImageUrl(res[0].url);
             // Do something with the response
-            console.log("Files: ", res);
-            console.log("Upload Completed");
+            // console.log("Files: ", res);
+            // console.log("Upload Completed");
           }}
           onUploadError={(error) => {
             // Do something with the error.
-            console.log(`ERROR! ${error.message}`);
+            // console.log(`ERROR! ${error.message}`);
           }}
         />
       )}

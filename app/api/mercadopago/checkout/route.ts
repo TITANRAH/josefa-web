@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  console.log("entro al post de mercado pago new");
+//   console.log("entro al post de mercado pago new");
 
   try {
     //   creo la orden de compra
@@ -76,10 +76,10 @@ export async function POST(request: Request) {
 
     const session = await auth();
 
-    console.log("sesion que se va al checkout de mp", session!.user);
+    // console.log("sesion que se va al checkout de mp", session!.user);
 
     if (!session) {
-      console.log("entro al no session oooh");
+    //   console.log("entro al no session oooh");
 
       return NextResponse.json({ error: "Unauthorized" }, { status: 400 });
     }
@@ -120,11 +120,11 @@ export async function POST(request: Request) {
     });
 
     // de esta respuesta lo que necesito es el campo init_point
-    console.log(response);
+    // console.log(response);
 
     return NextResponse.json(response);
   } catch (error: any) {
-    console.log(error);
+    // console.log(error);
 
     NextResponse.json("error", {
       status: 400,
