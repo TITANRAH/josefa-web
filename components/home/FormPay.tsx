@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { formSchema } from "@/app/schemas/form.schema";
+import { Label } from "../ui/label";
 
 function FormPay() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -28,7 +29,7 @@ function FormPay() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // console.log("entro al on submit", values);
+    console.log("entro al on submit", values);
 
     if (values.valor !== "") {
       const res = await fetch("/api/mercadopago/checkout", {
@@ -37,64 +38,60 @@ function FormPay() {
       });
 
       const data = await res.json();
-      // console.log(res);
+      console.log(res);
       window.location.href = data.init_point;
     }
   }
   return (
-    <div className="m-auto grid gap-6 p-4 max-w-96 bg-yellow-50 border-2 border-green-200 shadow-2xl rounded-lg">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+    <Form {...form}>
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
           <FormField
             control={form.control}
             name="valor"
             render={({ field }) => (
-              <FormItem className="px-2 mb-3 ">
-                <FormLabel className="text-slate-500">
-                  Monto <span className="text-red-600 ">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Monto a donar"
-                    type="text"
-                    className="border rounded-md p-2 border-slate-300 text-slate-500 dark:text-slate-50 focus-within:border-pink-600"
-                  />
-                </FormControl>
-                <FormMessage />
+              <FormItem>
+                <div className="space-y-1.5">
+                  <FormLabel>Monto</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="text"
+                      placeholder="Ingresa el monto"
+                      className="bg-white/10 borde border-gray-600 text-slate-700 placeholder:text-slate-700/50 focus:bg-white/20"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </div>
               </FormItem>
             )}
           />
 
           <FormField
+            control={form.control}
             name="mensaje"
             render={({ field }) => (
-              <FormItem className="px-2">
-                <FormLabel className="text-slate-600">Mensaje</FormLabel>
-                <FormControl>
+              <FormItem>
+                <div className="space-y-1.5">
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+
                   <Textarea
-                    className=" min-h-24 border-slate-300  dark:text-slate-50 focus-within:border-pink-600"
-                    placeholder="Deja tu mensaje"
                     {...field}
+                    className="bg-white/10 border border-gray-600 text-slate-700 placeholder:text-slate-700/50 focus:bg-white/20"
                   />
-                </FormControl>
-                <FormMessage />
+                  </FormControl>
+                  <FormMessage />
+                </div>
               </FormItem>
             )}
           />
-
-          <div className="flex justify-center">
-            <Button
-              className=" bg-blue-400 hover:bg-blue-500 p-2 mt-4 text-white rounded"
-              type="submit"
-            >
-              <CircleDollarSignIcon className="mr-2" size={20} />
-              REALIZAR DONACIÓN
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </div>
+        </div>
+        <Button type="submit" className="w-full">
+          Donar ahora
+        </Button>
+      </form>
+    </Form>
   );
 }
 

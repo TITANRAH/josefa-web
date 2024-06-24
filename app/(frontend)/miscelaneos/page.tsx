@@ -1,11 +1,11 @@
 import Articulos from '@/components/articulos/Articulos'
 import React from 'react'
 
-function ManualidadesPage() {
+function MiscelaneosPage() {
   return (
-    <Articulos titulo="Manualidades" />
+    <Articulos title="Miscelaneos" />
 
   )
 }
 
-export default ManualidadesPage
+export default MiscelaneosPage

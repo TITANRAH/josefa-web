@@ -3,12 +3,12 @@ import { Book, BookOpen, BookUp2Icon, Boxes, Cat, Dog, Music2, Paintbrush, Table
 export const petsLinks = [
   {
     name: "Kawai",
-    href: "/home/kawai",
+    href: "/kawai",
     icon: Dog,
   },
   {
     name: "Tita",
-    href: "/home/tita",
+    href: "/tita",
     icon: Cat,
   },
 ];
@@ -16,28 +16,28 @@ export const petsLinks = [
 export const sidebarLinks = [
   {
     name: "Dibujos",
-    href: "/home/dibujos",
+    href: "/dibujos",
     icon: Paintbrush,
   },
   {
     name: "Manualidades",
-    href: "/home/manualidades",
+    href: "/manualidades",
     icon: Table2,
   },
   {
     name: "Música",
-    href: "/home/musica",
+    href: "/musica",
     icon: Music2,
   },
   {
     name: "Libros",
-    href: "/home/libros",
+    href: "/libros",
     icon: BookOpen,
   },
 
   {
     name: "Misceláneos",
-    href: "/home/miscelaneos",
+    href: "/miscelaneos",
     icon: Boxes,
   },
 ];

@@ -1,12 +1,13 @@
+
 import { withAuth } from "next-auth/middleware";
 
 export default withAuth({
     
     pages: {
-        signIn: "/home/login",
+        signIn: "/",
     },
 });
 
 export const config = {
-    matcher: "/((?!api|home|.*\\..*|_next).*)",
+    matcher: "/((?!api|manualidades|dibujos|gracias|kawai|libros|login|miscelaneos|musica|pago-fallido|pendiente|procesando|tita|.*\\..*|_next).*)",
 };

@@ -34,14 +34,16 @@ function Navbar(props: Props) {
         <AlignJustify className="text-slate-600" />
       </button>
 
-      <div className="flex space-x-3 ml-40 lg:ml-auto">
-        {pathname !== "/home/login" && !userData.data && (
+      <div className="flex space-x-3 ml-12 md:ml-40 lg:ml-auto">
+        {pathname !== "/login" && !userData.data && (
           <Link
-            href="/home/login"
-            className="flex p-3 gap-2 items-center text-sm text-blue-500 hover:text-blue-800 font-medium"
+            href="/login"
+            className="flex flex-row p-2 gap-2 items-center text-sm text-slate-700 hover:text-slate-900 font-medium"
           >
             <LogIn />
-            INICIA SESIÓN
+
+            <h1 className="w-[100px]">INICIA SESIÓN</h1>
+            
           </Link>
         )}
 
@@ -49,20 +51,22 @@ function Navbar(props: Props) {
           userData.data && (
             <button
             onClick={()=> signOut()}
-            className="flex p-3 gap-2 items-center text-sm text-blue-500 hover:text-blue-800 font-medium"
+            className="flex p-3 gap-2 items-center text-sm text-slate-700 hover:text-slate-900 font-medium"
           >
             <LogOut />
-            CIERRA SESIÓN
+
+            <h1 className="w-[100px]">CIERRA SESIÓN</h1>
+            
           </button>
           )
         }
-        {pathname != "/home" && (
+        {pathname != "/" && (
           <Link
-            href={"/home"}
-            className="relative inline-flex items-center text-blue-500 hover:text-blue-800 p-3 text-sm font-medium text-center rounded-lg"
+            href={"/"}
+            className="relative inline-flex items-center text-slate-700 hover:text-slate-900 p-3 text-sm font-medium text-center rounded-lg"
           >
             <ChevronLeft />
-            IR A HOME
+            <h1 className="w-[100px]">IR A HOME</h1>
           </Link>
         )}
         {userData.data?.user.role == "ADMIN" && (
@@ -71,13 +75,13 @@ function Navbar(props: Props) {
             <Link
               href={
                 pathname === "/dashboard"
-                  ? "/dashboard/crear-articulo"
+                  ? "/crear-articulo"
                   : "/dashboard"
               }
-              className="relative inline-flex items-center text-blue-500 hover:text-blue-800 p-3 text-sm font-medium text-center rounded-lg"
+              className="relative inline-flex items-center text-slate-700 hover:text-slate-900 p-3 text-sm font-medium text-center rounded-lg"
             >
               <ChevronLeft />
-              {pathname === "/dashboard" ? "IR A SUBIR FOTO" : "IR A DASHBOARD"}
+              {pathname === "/dashboard" ?   <h1 className="w-[100px]">IR A SUBIR FOTO</h1>:   <h1 className="w-[100px]">IR A DASHBOARD</h1>}
             </Link>
           </>
         )}

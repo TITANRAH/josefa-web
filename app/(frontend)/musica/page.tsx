@@ -1,11 +1,11 @@
 import Articulos from '@/components/articulos/Articulos'
 import React from 'react'
 
-function TitaPage() {
+function MusicaPage() {
   return (
-    <Articulos titulo="Tita" />
 
+<Articulos title={'Música'}/>
   )
 }
 
-export default TitaPage
+export default MusicaPage

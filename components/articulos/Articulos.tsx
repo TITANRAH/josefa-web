@@ -1,16 +1,15 @@
-import React from "react";
+import Image from "next/image";
 import Articulo from "./Articulo";
 
 interface Props {
-  titulo: string;
+  title: string;
 }
-
-function Ariculos(props: Props) {
-  const { titulo } = props;
+export default function Articulos(props: Props) {
+  const { title } = props;
   return (
-    <div className="">
-      <h2 className="text-2xl pb-4 text-pink-500">{titulo}</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2  xl:grid-cols-2 items-center gap-3">
+    <section className="flex flex-col">
+      <h1 className="text-3xl text-orange-400 underline font-bold">{title}</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 md:px-6 py-12 md:py-24">
         <Articulo />
         <Articulo />
         <Articulo />
@@ -18,8 +17,6 @@ function Ariculos(props: Props) {
         <Articulo />
         <Articulo />
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Ariculos;

@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* el main contiene todo y esta corrido 60 hacia la derecha con un ml 60 por que el ancho del side bar es 60 */}
         {/* MAIN BODY */}
         
-        <main className="p-8 h-[calc(100%_-_6rem)] bg-[#FFB701] dark:bg-slate-950 text-slate-500 mt-24 z-50">
+        <main className="p-8 h-[calc(100%_-_6rem)] bg-lime-200 dark:bg-slate-950 text-slate-500 mt-24 z-50">
           
           {children}
         </main>

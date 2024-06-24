@@ -1,11 +1,11 @@
 import Articulos from '@/components/articulos/Articulos'
 import React from 'react'
 
-function MiscelaneosPage() {
+function TitaPage() {
   return (
-    <Articulos titulo="Miscelaneos" />
+    <Articulos title="Tita" />
 
   )
 }
 
-export default MiscelaneosPage
+export default TitaPage

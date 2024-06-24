@@ -44,13 +44,13 @@ function Sidebar(props: Props) {
   return (
     <div
       className={cn(
-        " bg-white fade-in lg:block xl:block dark:bg-slate-700 space-y-6 w-64 h-screen text-slate-800 dark:text-slate-50 p-3 fixed left-0 top-0 shadow-2xl overflow-y-scroll ",
+        " bg-white fade-in lg:block xl:block dark:bg-slate-700 space-y-6 w-64 h-screen text-slate-800 dark:text-slate-50 p-3 fixed left-0 top-0 shadow-2xl overflow-y-scroll z-50 mt-10 md:mt-1 ",
         {
           hidden: !showSidebar,
         }
       )}
     >
-      <Link href="/home">
+      <Link href="/" className="mt-10">
         <Image alt="foto" width={250} height={250} src={"/MIS.gif"} />
       </Link>
       <div className="space-y-3 flex flex-col mt-14">

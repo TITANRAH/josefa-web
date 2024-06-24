@@ -4,7 +4,7 @@ import React from "react";
 function DibujosPage() {
   return (
     <div className="min-h-screen ">
-      <Articulos titulo="Dibujos" />
+      <Articulos title="Dibujos" />
     </div>
   );
 }

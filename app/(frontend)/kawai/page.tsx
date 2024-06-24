@@ -1,11 +1,11 @@
 import Articulos from '@/components/articulos/Articulos'
 import React from 'react'
 
-function MusicaPage() {
+function KawaiPage() {
   return (
+    <Articulos title="Kawai" />
 
-<Articulos titulo={'Música'}/>
   )
 }
 
-export default MusicaPage
+export default KawaiPage
