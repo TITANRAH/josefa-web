@@ -1,6 +1,8 @@
+'use server'
 
+import { Article } from "@/interfaces/article.interface";
 
-export async function getArticlesByCategory(categoria: string) {
+export async function getArticlesByCategory(categoria: string): Promise<Article | []>{
   console.log("entro aca al action createReport", categoria);
 
   try {
@@ -22,9 +24,6 @@ export async function getArticlesByCategory(categoria: string) {
   } catch (error) {
     console.log(error);
 
-    return {
-      error,
-      message: "Fallo la obtencion de los articulos",
-    };
+    return []
   }
 }
