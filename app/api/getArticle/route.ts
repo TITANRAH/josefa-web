@@ -1,4 +1,3 @@
-'use server'
 
 import { NextRequest, NextResponse } from "next/server";
 import prismadb from "@/lib/prismadb";
@@ -22,10 +21,10 @@ export async function GET(request: NextRequest) {
   
     console.log(articles);
   
-    return NextResponse.json({data:articles});
+    return NextResponse.json(articles);
   } catch (error) {
     console.log(error)
-    NextResponse.json(error)
+   return NextResponse.json(error)
   }
  
 }
