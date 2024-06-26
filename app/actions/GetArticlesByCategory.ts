@@ -1,5 +1,5 @@
 
-
+'use server'
 import { Article } from "@/interfaces/article.interface";
 import prismadb from "@/lib/prismadb";
 

@@ -1,3 +1,5 @@
+'use server'
+
 import { DonacionInterface } from "@/interfaces/donacion.interface";
 import prismadb from "@/lib/prismadb";
 
