@@ -15,8 +15,8 @@ async function DashboardPage() {
      
      
       <ul className="max-h-100 overflow-y-scroll p-10">
-        {messages.map((m) => (
-          <li className={cn("text-1xl text-black list-decimal w-full", {
+        {messages.map((m, index) => (
+          <li key={index} className={cn("text-1xl text-black list-decimal w-full", {
             "font-extrabold" : m.mensaje
           })}>{m.mensaje ? m.mensaje : 'sin mensaje'}</li>
         ))}
