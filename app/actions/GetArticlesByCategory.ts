@@ -13,7 +13,7 @@ export async function getArticlesByCategory(categoria: string): Promise<Article[
         categoria: categoria,
       },
     });
-  
+    
     console.log(articles);
   
     return articles

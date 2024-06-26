@@ -34,6 +34,15 @@ const Conteo = (props: Props) => {
             >
               SUBIR IMAGEN
             </Link>
+            <Link
+              href="/ver-mensajes"
+              className="bg-blue-600 hover:bg-blue-500 py-3 px-2 rounded-xl mt-10"
+            >
+              VER MENSAJES
+            </Link>
+
+   
+
           </div>
         </div>
       </div>

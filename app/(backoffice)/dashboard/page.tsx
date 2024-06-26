@@ -2,10 +2,16 @@
 
 import Conteo from '@/components/dashboard/Conteo';
 import React from 'react'
+import Link from  'next/link'
 
 function DashboardPage() {
   return (
-    <Conteo moneyCount={"2"} restCount={'100'} />
+
+    <div>
+
+      <Conteo moneyCount={"2"} restCount={'100'} />
+
+    </div>
   )
 }
 

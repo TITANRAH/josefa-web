@@ -11,6 +11,7 @@ export async function createArticle(article: Article) {
       const res = await fetch("/api/createArticle", {
         method: "POST",
         body: JSON.stringify(article),
+        cache:'no-cache'
       });
 
       console.log(res)
