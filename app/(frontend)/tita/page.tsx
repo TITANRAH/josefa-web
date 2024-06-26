@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Articulos from "@/components/articulos/Articulos";
 
 function TitaPage() {
