@@ -12,7 +12,7 @@ export default async function Articulos(props: Props) {
   const { title, slug } = props;
 
   console.log(title.toLowerCase());
-  const articulos = await getArticlesByCategory(slug);
+  const articulos:Article[] | [] = await getArticlesByCategory(slug);
 
   console.log(articulos);
 
@@ -20,8 +20,8 @@ export default async function Articulos(props: Props) {
     <section className="flex flex-col">
       <h1 className="text-3xl text-orange-400 underline font-bold">{title}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 md:px-6 py-12 md:py-24">
-        {articulos != null && articulos && articulos != undefined && articulos.data.length > 0 ? (
-          articulos.data.map((a: Article, index: any) => (
+        {articulos != null && articulos && articulos != undefined && articulos.length > 0 ? (
+          articulos.map((a: Article, index: any) => (
             <Articulo
               key={index}
               image={a.imagen!}
