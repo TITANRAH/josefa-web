@@ -114,9 +114,9 @@ export async function POST(request: NextRequest) {
           },
         ],
         back_urls: {
-          success: `${process.env.MERCADOPAGO_BACKEND_URL}/gracias`,
-          failure: `${process.env.MERCADOPAGO_BACKEND_URL}/pago-fallido`,
-          pending: `${process.env.MERCADOPAGO_BACKEND_URL}/pendiente`,
+          success: `${process.env.NEXTAUTH_URL}/gracias`,
+          failure: `${process.env.NEXTAUTH_URL}/pago-fallido`,
+          pending: `${process.env.NEXTAUTH_URL}/pendiente`,
         },
         auto_return: "approved",
         metadata: {
