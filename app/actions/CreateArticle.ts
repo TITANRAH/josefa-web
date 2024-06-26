@@ -1,5 +1,5 @@
 // import connectionToDatabase from "@/utils/connectToDatabase";
-'use server'
+
 import { Article } from "@/interfaces/article.interface";
 
 
