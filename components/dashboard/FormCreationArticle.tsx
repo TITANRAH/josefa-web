@@ -141,7 +141,7 @@ function FormCreationArticle() {
                       <SelectGroup>
                         <SelectLabel>Categorías</SelectLabel>
                         {categories.map((c) => (
-                          <SelectItem value={c.category} className="cursor-pointer">
+                          <SelectItem key={c.id} value={c.category} className="cursor-pointer">
                             {c.nameCategory}
                           </SelectItem>
                         ))}
