@@ -13,7 +13,7 @@ export async function getArticlesByCategory(categoria: string): Promise<Article[
         headers: {
           "Content-Type": "application/json",
         },
-        // cache: 'no-store'
+        cache: 'no-store'
       }
     );
 
