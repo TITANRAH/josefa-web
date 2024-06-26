@@ -1,9 +1,7 @@
-import Articulos from '@/components/articulos/Articulos'
-import React from 'react'
+import Articulos from "@/components/articulos/Articulos";
 
 function MiscelaneosPage() {
-  return <Articulos title="Miscelaneos" slug="miscelaneos"/>
-
+  return <Articulos title={"Miscelaneos"} slug={"miscelaneos"} />;
 }
 
-export default MiscelaneosPage
+export default MiscelaneosPage;

@@ -3,7 +3,7 @@ import React from "react";
 
 function DibujosPage() {
 
-  return <Articulos title="Dibujos" slug="dibujos"/>
+  return <Articulos title={"Dibujos"} slug={"dibujos"}/>
 
 }
 

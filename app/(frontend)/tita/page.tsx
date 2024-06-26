@@ -1,11 +1,7 @@
-import Articulos from '@/components/articulos/Articulos'
-import React from 'react'
+import Articulos from "@/components/articulos/Articulos";
 
 function TitaPage() {
-  return (
-    <Articulos title="Tita" slug="tita"/>
-
-  )
+  return <Articulos title={"Tita"} slug={"tita"} />;
 }
 
-export default TitaPage
+export default TitaPage;

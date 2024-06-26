@@ -1,9 +1,8 @@
-import { getArticlesByCategory } from "@/app/actions/GetArticlesByCategory";
 import Articulos from "@/components/articulos/Articulos";
 import React from "react";
 
 async function KawaiPage() {
-  return <Articulos title="Kawai" slug="kawai"/>
+  return <Articulos title={"Kawai"} slug={"kawai"}/>
 
 }
 

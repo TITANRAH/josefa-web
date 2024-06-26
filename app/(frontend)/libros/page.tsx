@@ -2,7 +2,7 @@ import Articulos from "@/components/articulos/Articulos";
 import React from "react";
 
 function LibrosPage() {
-  return <Articulos title="Libros" slug="libros"/>
+  return <Articulos title={"Libros"} slug={"libros"}/>
 
 
 }

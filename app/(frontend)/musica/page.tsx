@@ -1,11 +1,7 @@
-import Articulos from '@/components/articulos/Articulos'
-import React from 'react'
+import Articulos from "@/components/articulos/Articulos";
 
 function MusicaPage() {
-  return (
-
-<Articulos title={'Música'} slug={'musica'}/>
-  )
+  return <Articulos title={"Música"} slug={"musica"} />;
 }
 
-export default MusicaPage
+export default MusicaPage;
