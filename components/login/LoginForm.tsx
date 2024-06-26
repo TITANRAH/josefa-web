@@ -147,10 +147,11 @@ export const LoginForm = ({ className }: ILoginFormProps) => {
         </div>
         <div className="flex mt-6 flex-col gap-4 sm:flex-row justify-between md:items-center ">
           <div className="w-full shrink-0">
-            <Button className="w-full bg-blue-600 hover:bg-blue-800 rounded-md" type="submit">
-              {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              INGRESAR
-            </Button>
+           
+            <Button type="submit" className="w-full">
+            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          Ingresar
+        </Button>
           </div>
         </div>
       </form>

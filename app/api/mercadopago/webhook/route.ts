@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { client } from "@/lib/mercadopago";
-import { redirect } from "next/navigation";
+import prismadb from '@/lib/prismadb';
 
 // le digo al webhook que a esta ruta neceisto que llegue la info cuando se compre algo en mi plataforma
 // extraigo el body cuando se genere un pago
@@ -14,7 +14,7 @@ import { redirect } from "next/navigation";
 // instancio a Payment opara saber el estado del pago
 
 export async function POST(request: NextRequest) {
-//   console.log("entro al webhook");
+  console.log("entro al webhook");
 
   // tambien puedo llamar a los headers asi
 //   console.log(request.headers.get("x-request-id"));
@@ -85,44 +85,50 @@ export async function POST(request: NextRequest) {
 
   //   consulta de forma segura si pasa la seguridad
   const paymentId = body.data.id;
+  // const metadata = body.data.metadata.mensaje;
+  // const {mensaje} = await metadata
+ 
 
   const payment = await new Payment(client).get({
     id: paymentId,
   });
-  console.log(payment);
+  // console.log(payment);
+
+  const {mensaje} = payment.metadata
+  // console.log(mensaje)
 
 
   switch (payment.status_detail) {
     case "cc_rejected_insufficient_amount":
-    //   console.log("entro al error de saldo insufciente");
+      console.log("entro al error de saldo insufciente");
       return NextResponse.json({
         message: "Algún dato de la tarjeta es inválido",
         status: 401,
       });
 
     case "cc_rejected_bad_filled_other":
-    //   console.log("entro al error cualquiera");
+      console.log("entro al error cualquiera");
       return NextResponse.json({
         message: "Ocurrió un error inesperado",
         status: 401,
       });
 
     case "cc_rejected_bad_filled_security_code":
-    //   console.log("entro al error de código de seguridad");
+      console.log("entro al error de código de seguridad");
       return NextResponse.json({
         message: "Código de seguridad erroneo",
         status: 401,
       });
 
     case "cc_rejected_bad_filled_date":
-    //   console.log("entro al error de fecha de vencimiento");
+      console.log("entro al error de fecha de vencimiento");
       return NextResponse.json({
         message: "Fecha de vencimiento erronea",
         status: 401,
       });
 
     case "cc_rejected_bad_filled_card_number":
-    //   console.log("entro al error de numero de tarjeta");
+      console.log("entro al error de numero de tarjeta");
       return NextResponse.json({
         message: "Número de tarjeta erroneo",
         status: 401,
@@ -144,26 +150,25 @@ export async function POST(request: NextRequest) {
 
     // console.log(payment.id, payment.status, payment.transaction_amount);
 
-    // const existePaymentId = await prisma.payments.findFirst({
-    //   where: {
-    //     paymentId: payment.id,
-    //   },
-    // });
+    const existePaymentId = await prismadb.donacion.findFirst({
+      where: {
+        paymentId: payment.id?.toString(),
+      },
+    });
 
-    // if (existePaymentId) {
-    //   return NextResponse.json("Payment existe no se volvera a grabar en bd", {
-    //     status: 201,
-    //   });
-    // }
-    // const newPaymentRecordPending = await prisma.payments.create({
-    //   data: {
-    //     total: payment.transaction_amount!,
-    //     userId: userFound!.id,
-    //     paymentId: payment.id,
-    //     provider: "mercadopago",
-    //     status_payment: payment.status,
-    //   },
-    // });
+    if (existePaymentId) {
+      return NextResponse.json("Payment existe no se volvera a grabar en bd", {
+        status: 201,
+      });
+    }
+    const newPaymentRecordPending = await prismadb.donacion.create({
+      data: {
+        monto: payment.transaction_amount!.toString(),
+        mensaje: mensaje,
+        paymentId: payment.id?.toString()!,
+        statusPayment: payment.status!,
+      },
+    });
     // console.log(newPaymentRecordPending);
 
     // CONSULTAR SI EL PAGO ESTA APROBADO POR PARTE DE MERCADO PAGO

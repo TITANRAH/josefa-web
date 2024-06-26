@@ -1,11 +1,10 @@
-import Articulos from '@/components/articulos/Articulos'
-import React from 'react'
+import { getArticlesByCategory } from "@/app/actions/GetArticlesByCategory";
+import Articulos from "@/components/articulos/Articulos";
+import React from "react";
 
-function KawaiPage() {
-  return (
-    <Articulos title="Kawai" />
+async function KawaiPage() {
+  return <Articulos title="Kawai" slug="kawai"/>
 
-  )
 }
 
-export default KawaiPage
+export default KawaiPage;

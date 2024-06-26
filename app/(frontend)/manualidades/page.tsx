@@ -1,11 +1,9 @@
-import Articulos from '@/components/articulos/Articulos'
-import React from 'react'
+import Articulos from "@/components/articulos/Articulos";
+import React from "react";
 
-function ManualidadesPage() {
-  return (
-    <Articulos title="Manualidades" />
+async function ManualidadesPage() {
+  return <Articulos title="Manualidades" slug="manualidades"/>
 
-  )
 }
 
-export default ManualidadesPage
+export default ManualidadesPage;

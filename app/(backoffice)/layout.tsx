@@ -1,9 +1,11 @@
-"use client";
+
+'use client'
 
 import Navbar from "@/components/home/Navbar";
+import { useState } from "react";
 // import { auth } from "../utils/auth";
 
-export default async function Layout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
@@ -13,7 +15,7 @@ export default async function Layout({
   return (
 
     <div className="w-full min-h-screen mt-5">
-      <Navbar setShowSidebar={() => {}} showSidebar={true} key={1} />
+      <Navbar setShowSidebar={()=>(true)}/>
       {children}
     </div>
   );

@@ -1,3 +1,5 @@
+'use client'
+
 import { UploadDropzone } from "@/lib/uploadThing";
 import { Pencil } from "lucide-react";
 import Image from "next/image";
@@ -50,7 +52,7 @@ export default function ImageInput(props: Props) {
         />
       ) : (
         <UploadDropzone
-        className={className}
+          className={className}
           endpoint={endpoint}
           onClientUploadComplete={(res) => {
             setImageUrl(res[0].url);
@@ -60,7 +62,7 @@ export default function ImageInput(props: Props) {
           }}
           onUploadError={(error) => {
             // Do something with the error.
-            // console.log(`ERROR! ${error.message}`);
+            console.log(`ERROR! ${error.message}`);
           }}
         />
       )}

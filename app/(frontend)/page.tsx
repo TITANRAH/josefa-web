@@ -29,11 +29,11 @@ export default function Home() {
       <div className="container relative z-10 px-4 md:px-6">
         <div className="mx-auto flex flex-col items-center justify-center max-w-xl space-y-6 text-center text-slate-700">
 
-        <Image width={250} height={250} src="/josefa.jpeg" alt="jose" className="rounded-full border-2 border-green-400" />
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+        <Image width={220} height={220} src="/josefa.jpeg" alt="jose" className="rounded-full border-2 border-green-400" />
+          <h1 className="text-2xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
             Únete a la causa
           </h1>
-          <p className="text-lg md:text-xl">Tu donación hará una diferencia significativa en mis esfuerzos.</p>
+          <p className="text-lg md:text-[18px]">Tu donación hará una diferencia significativa en mis esfuerzos.</p>
          <FormPay/>
         </div>
       </div>

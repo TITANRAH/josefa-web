@@ -1,3 +1,5 @@
+'use client'
+
 import Conteo from '@/components/dashboard/Conteo';
 import React from 'react'
 

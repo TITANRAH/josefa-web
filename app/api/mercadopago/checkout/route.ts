@@ -1,12 +1,18 @@
 // Step 1: Import the parts of the module you want to use
-import { auth } from "@/app/utils/auth";
 import { client } from "@/lib/mercadopago";
 import { Preference } from "mercadopago";
-import { redirect } from "next/navigation";
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+
+  const body = await request.json()
+
+  console.log(body)
+
+  const {valor, mensaje} = body
+
+  console.log(valor, mensaje)
 //   console.log("entro al post de mercado pago new");
 
   try {
@@ -101,18 +107,21 @@ export async function POST(request: Request) {
         items: [
           {
             id: "111",
-            title: "prueba preferencia",
+            title: "donación",
             quantity: 1,
-            unit_price: 10,
+            unit_price: +valor,
             currency_id: "CLP",
           },
         ],
         back_urls: {
-          success: `${process.env.MERCADOPAGO_BACKEND_URL}/home/gracias`,
-          failure: `${process.env.MERCADOPAGO_BACKEND_URL}/home/pago-fallido`,
-          pending: `${process.env.MERCADOPAGO_BACKEND_URL}/home/pendiente`,
+          success: `${process.env.MERCADOPAGO_BACKEND_URL}/gracias`,
+          failure: `${process.env.MERCADOPAGO_BACKEND_URL}/pago-fallido`,
+          pending: `${process.env.MERCADOPAGO_BACKEND_URL}/pendiente`,
         },
         auto_return: "approved",
+        metadata: {
+          mensaje: mensaje
+        }
        
       },
     });

@@ -2,9 +2,9 @@ import Articulos from "@/components/articulos/Articulos";
 import React from "react";
 
 function LibrosPage() {
-  return (
-   <></>
-  );
+  return <Articulos title="Libros" slug="libros"/>
+
+
 }
 
 export default LibrosPage;

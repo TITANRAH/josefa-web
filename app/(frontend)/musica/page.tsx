@@ -4,7 +4,7 @@ import React from 'react'
 function MusicaPage() {
   return (
 
-<Articulos title={'Música'}/>
+<Articulos title={'Música'} slug={'musica'}/>
   )
 }
 

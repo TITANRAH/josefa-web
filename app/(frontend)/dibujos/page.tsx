@@ -2,11 +2,9 @@ import Articulos from "@/components/articulos/Articulos";
 import React from "react";
 
 function DibujosPage() {
-  return (
-    <div className="min-h-screen ">
-      <Articulos title="Dibujos" />
-    </div>
-  );
+
+  return <Articulos title="Dibujos" slug="dibujos"/>
+
 }
 
 export default DibujosPage;

@@ -3,7 +3,7 @@ import React from 'react'
 
 function TitaPage() {
   return (
-    <Articulos title="Tita" />
+    <Articulos title="Tita" slug="tita"/>
 
   )
 }

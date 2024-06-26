@@ -32,7 +32,7 @@ model Donacion {
 
 model Articulo {
   id          Int    @id @default(autoincrement())
-  nombre      String
+  categoria   String
   imagen      String
   descripcion String
 }

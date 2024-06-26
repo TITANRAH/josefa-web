@@ -1,9 +1,5 @@
-"use client";
-
-import { Camera, CircleDollarSignIcon } from "lucide-react";
-import React, { useState } from "react";
+import { CircleDollarSignIcon } from "lucide-react";
 import Image from "next/image";
-import ImageInput from "./ImageInput";
 import Link from "next/link";
 
 interface Props {
@@ -12,7 +8,6 @@ interface Props {
 }
 const Conteo = (props: Props) => {
   const { moneyCount, restCount } = props;
-
 
   return (
     <div className="flex flex-col">
@@ -23,7 +18,7 @@ const Conteo = (props: Props) => {
           height={900}
           className="h-full md:mr-auto"
           src="/brasil.gif"
-        ></Image>
+        />
         <div className="flex md:mr-auto text-white mt-10">
           <div className="flex flex-col justify-center items-center">
             <CircleDollarSignIcon className="text-[#028C01] h-10 w-10 md:h-56 md:w-56 animate-bounce" />
@@ -33,13 +28,15 @@ const Conteo = (props: Props) => {
               </h2>
             </div>
 
-            <Link href='/dashboard/crear-articulo' className="bg-blue-600 hover:bg-blue-500 py-3 px-2 rounded-xl mt-10">SUBIR IMAGEN</Link>
-            
+            <Link
+              href="/crear-articulo"
+              className="bg-blue-600 hover:bg-blue-500 py-3 px-2 rounded-xl mt-10"
+            >
+              SUBIR IMAGEN
+            </Link>
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 };

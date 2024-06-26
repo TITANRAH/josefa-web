@@ -1,6 +1,6 @@
 "use client";
 
-import { AlignJustify, ChevronLeft, LogIn, LogOut } from "lucide-react";
+import { AlignJustify, ChevronLeft, LogIn, LogOut, X } from "lucide-react";
 import React, { Dispatch, SetStateAction } from "react";
 import { Button } from "../ui/button";
 import { Avatar } from "../ui/avatar";
@@ -16,7 +16,7 @@ import { signOut, useSession } from "next-auth/react";
 
 interface Props {
   setShowSidebar: Dispatch<SetStateAction<boolean>>;
-  showSidebar: boolean;
+  showSidebar?: boolean;
 }
 function Navbar(props: Props) {
   const { setShowSidebar, showSidebar } = props;
@@ -26,15 +26,19 @@ function Navbar(props: Props) {
   // console.log(userData.data);
 
   return (
-    <div className="flex items-center shadow-lg justify-between bg-green-400 dark:bg-slate-800 text-slate-50 h-[6rem] py-8 fixed w-full top-0 px-8 z-50 pr-[20rem]">
-      <button
-        className="block lg:hidden"
+    <div className="flex items-center shadow-lg justify-between bg-green-400 dark:bg-slate-800 text-slate-50 h-[6rem]  py-8 fixed w-full top-0 md:px-8 z-50 md:pr-[20rem]">
+     { pathname != '/dashboard' && pathname != '/crear-articulo' && <button
+        className="block lg:hidden ml-10"
         onClick={() => setShowSidebar(!showSidebar)}
       >
-        <AlignJustify className="text-slate-600" />
-      </button>
+        {showSidebar ? (
+          <X className="text-slate-600 fade-in" />
+        ) : (
+          <AlignJustify className="text-slate-600 fade-in" />
+        )}
+      </button>}
 
-      <div className="flex space-x-3 ml-12 md:ml-40 lg:ml-auto">
+      <div className="flex space-x-3 mr-4 ml-3 md:ml-40 lg:ml-auto">
         {pathname !== "/login" && !userData.data && (
           <Link
             href="/login"
@@ -43,52 +47,50 @@ function Navbar(props: Props) {
             <LogIn />
 
             <h1 className="w-[100px]">INICIA SESIÓN</h1>
-            
           </Link>
         )}
 
-        {
-          userData.data && (
-            <button
-            onClick={()=> signOut()}
-            className="flex p-3 gap-2 items-center text-sm text-slate-700 hover:text-slate-900 font-medium"
+        {userData.data && (
+          <button
+            onClick={() => signOut()}
+            className="flex md:p-3 gap-2 items-center text-sm text-slate-700 hover:text-slate-900 font-medium"
           >
             <LogOut />
 
-            <h1 className="w-[100px]">CIERRA SESIÓN</h1>
-            
+            <h1 className="w-[70px] md:w-full">CIERRA SESIÓN</h1>
           </button>
-          )
-        }
+        )}
         {pathname != "/" && (
           <Link
             href={"/"}
             className="relative inline-flex items-center text-slate-700 hover:text-slate-900 p-3 text-sm font-medium text-center rounded-lg"
           >
             <ChevronLeft />
-            <h1 className="w-[100px]">IR A HOME</h1>
+            <h1 className="w-[75px]">IR A HOME</h1>
           </Link>
         )}
+
         {userData.data?.user.role == "ADMIN" && (
           <>
-            
             <Link
               href={
-                pathname === "/dashboard"
-                  ? "/crear-articulo"
-                  : "/dashboard"
+                pathname === "/dashboard" ? "/crear-articulo" : "/dashboard"
               }
-              className="relative inline-flex items-center text-slate-700 hover:text-slate-900 p-3 text-sm font-medium text-center rounded-lg"
+              className="relative inline-flex items-center text-slate-700 hover:text-slate-900 md:p-3 text-sm font-medium text-center rounded-lg"
             >
               <ChevronLeft />
-              {pathname === "/dashboard" ?   <h1 className="w-[100px]">IR A SUBIR FOTO</h1>:   <h1 className="w-[100px]">IR A DASHBOARD</h1>}
+              {pathname === "/dashboard" ? (
+                <h1 className="w-[90px] md:w-full">SUBIR FOTO</h1>
+              ) : (
+                <h1 className=" w-[90px] md:w-full">DASHBOARD</h1>
+              )}
             </Link>
           </>
         )}
 
-        <button className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white rounded-lg">
+        {/* <button className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white rounded-lg">
           <ThemSwitcherBtn />
-        </button>
+        </button> */}
 
         <DropdownMenu>
           <DropdownMenuTrigger>

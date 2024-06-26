@@ -1,4 +1,7 @@
 
+'use client'
+
+
 interface Props {
     video: string;
 }
